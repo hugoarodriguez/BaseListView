@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -131,6 +132,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void borrarProducto(String idProducto){
+        Base obj = new Base(this, "Productos", null, 1);
+        SQLiteDatabase objDB = obj.getWritableDatabase();
+
+        Cursor cursor = objDB.rawQuery("SELECT * FROM Compras WHERE ID = ?", new String[]{idProducto});
+
+        if(cursor.moveToNext()){
+            //Eliminamos todos los registros de nuestra tabla "Compras"
+            objDB.delete("Compras", "Id = ?", new String[]{idProducto});
+            //Limpiamos nuestro ArrayList
+            array_list.clear();
+
+            //Notificamos que los datos se han modificado, cualquier vista que refleje el conjunto
+            //de datos debe actualizarse
+            adaptador.notifyDataSetChanged();
+
+            Toast.makeText(this, "Se ha eliminado el producto seleccionado", Toast.LENGTH_SHORT).show();
+            objDB.close();
+        }
+
+        MostrarLista();
+    }
+
     public void MostrarLista(){
         Base obj = new Base(this, "Productos", null, 1);
         SQLiteDatabase objDB = obj.getWritableDatabase();
@@ -147,6 +171,50 @@ public class MainActivity extends AppCompatActivity {
 
         adaptador = new ArrayAdapter(this, android.R.layout.simple_list_item_1, array_list);
         lvProductos.setAdapter(adaptador);
+        clickListViewItem();
         objDB.close();
+    }
+
+    public void modificarProducto(String idProducto, String producto){
+        //TODO: Agregar las funciones necesarias para modificar un producto
+    }
+
+    public void clickListViewItem(){
+        lvProductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle(getResources().getString(R.string.eliminar_title))
+                        .setMessage(getResources().getString(R.string.eliminar_message))
+                        .setPositiveButton(R.string.delete_button, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                //Obtenmos el id del producto seleccionado
+                                String producto = lvProductos.getItemAtPosition(position).toString();
+                                int guionPosition = producto.indexOf("-");
+                                String idProducto = producto.substring(0, guionPosition-1).toString();
+
+                                borrarProducto(idProducto);
+
+                            }
+                        })
+                        .setNegativeButton(R.string.modify_button, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                //Obtenmos el id del producto seleccionado
+                                String producto = lvProductos.getItemAtPosition(position).toString();
+                                int guionPosition = producto.indexOf("-");
+                                String idProducto = producto.substring(0, guionPosition-1).toString();
+
+                                //TODO: Agregar modificarProductos()
+
+                            }
+                        })
+                        .setNeutralButton(R.string.nothing_button, null)
+                        .show();
+            }
+        });
     }
 }

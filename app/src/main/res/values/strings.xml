@@ -8,4 +8,9 @@
     <string name="borrarLista">Borrar Lista</string>
     <string name="acercaDe">Acerca De</string>
     <string name="salir">Salir</string>
+    <string name="eliminar_title">Has Seleccionado un Producto</string>
+    <string name="eliminar_message">¿Qué acción deseas hacer con el producto?</string>
+    <string name="delete_button">Eliminar</string>
+    <string name="modify_button">Modificar</string>
+    <string name="nothing_button">Nada</string>
 </resources>
