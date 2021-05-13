@@ -3,8 +3,10 @@
 
     <string name="titulo">Mi Lista de Compras</string>
     <string name="hint_agg_producto">Agregar un producto a mi lista</string>
+    <string name="hint_agg_producto2">Modificar un producto de mi lista</string>
     <string name="btnAgregar">Agregar</string>
 
+    <string name="cancelar">Cancelar</string>
     <string name="borrarLista">Borrar Lista</string>
     <string name="acercaDe">Acerca De</string>
     <string name="salir">Salir</string>
