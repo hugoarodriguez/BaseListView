@@ -27,7 +27,7 @@
         android:background="?android:attr/listDivider" />
 
     <LinearLayout
-        android:id="@+id/llDatos"
+        android:id="@+id/llDatosAlumno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -36,12 +36,80 @@
         app:layout_constraintTop_toTopOf="@id/divider"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nombre_estudiante_tv"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:paddingRight="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nombre_estudiante"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/carnet_tv"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:paddingRight="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/carnet"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/llDatosAlumno"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:id="@+id/llDatos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintTop_toTopOf="@id/divider2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilProducto"
             android:layout_width="250dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingEnd="10dp"
+            tools:ignore="RtlSymmetry">
 
             <EditText
                 android:id="@+id/etProducto"
@@ -58,9 +126,7 @@
             android:layout_width="120dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:text="@string/btnAgregar"
-            />
-
+            android:text="@string/btnAgregar" />
 
     </LinearLayout>
 
@@ -68,6 +134,9 @@
         android:id="@+id/lvProductos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="150dp"
-        app:layout_constraintTop_toBottomOf="@+id/llDatos"/>
+        android:layout_marginTop="235dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

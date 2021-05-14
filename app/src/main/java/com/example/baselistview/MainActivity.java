@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.op_acercaDe:
                 builder.setTitle("Acerca De")
-                        .setMessage("Hecho por Hugo Alexander Rodríguez Cruz\n\n25-0663-2017")
+                        .setMessage("Estudiante: Hugo Alexander Rodríguez Cruz\n\nCarnet: 25-0663-2017")
                         .setNeutralButton("Ok", null)
                         .show();
 

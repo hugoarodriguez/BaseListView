@@ -15,4 +15,12 @@
     <string name="delete_button">Eliminar</string>
     <string name="modify_button">Modificar</string>
     <string name="nothing_button">Nada</string>
+
+    <!-- labels -->
+    <string name="nombre_estudiante_tv">Estudiante:</string>
+    <string name="carnet_tv">Carnet:</string>
+
+    <!-- Datos Alumno -->
+    <string name="nombre_estudiante">Hugo Alexander Rodríguez Cruz</string>
+    <string name="carnet">25-0663-2017</string>
 </resources>
